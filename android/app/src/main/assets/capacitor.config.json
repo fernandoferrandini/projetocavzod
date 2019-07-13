@@ -1,0 +1,11 @@
+{
+  "appId": "com.cavzod.app",
+  "appName": "CavalheirosZodiaco",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "url": "http://10.136.74.16:4200",
+    "hostname": "app"
+  }
+}
