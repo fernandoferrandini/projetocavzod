@@ -5,7 +5,7 @@
   "npmClient": "npm",
   "webDir": "www",
   "server": {
-    "url": "http://10.136.74.16:4200",
+    "url": "http://10.136.74.35:4200",
     "hostname": "app"
   }
 }

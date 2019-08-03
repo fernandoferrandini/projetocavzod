@@ -4,7 +4,7 @@
     <mat-card-title>Listagem</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <app-cavzod-list></app-cavzod-list>
+    <app-cavzod-list [cavzods]="cavzods$ | async" (actionEmitter)="dispatch($event)"></app-cavzod-list>
   </mat-card-content>
 </mat-card>
 </div>

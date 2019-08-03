@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {Cavzod} from '../../model/cavzod.model';
+import {CavzodState} from '../../store/reducers/global.reducer';
+import {Action, select, Store} from '@ngrx/store';
+import {getAllCavzods, getSelectCavzod} from '../../store/selectors/cavzods.selectors';
 
 @Component({
   selector: 'app-cavzod',
@@ -7,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CavzodComponent implements OnInit {
 
-  constructor() { }
+  cavzod$: Observable<Cavzod>;
+
+  constructor(private store: Store<CavzodState>) { }
 
   ngOnInit() {
+    this.cavzod$ = this.store.pipe(select(getSelectCavzod));
+  }
+
+  dispatch(action: Action) {
+    this.store.dispatch(action);
   }
 
 }

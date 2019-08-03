@@ -7,6 +7,9 @@ import { CavzodComponent } from './containers/cavzod/cavzod.component';
 import { CavzodDetailComponent } from './components/cavzod-detail/cavzod-detail.component';
 import { CavzodListComponent } from './components/cavzod-list/cavzod-list.component';
 import {SharedModule} from '../core/shared/shared.module';
+import {StoreModule} from '@ngrx/store';
+import {cavzodReducer} from './store/reducers/global.reducer';
+
 
 
 @NgModule({
@@ -14,7 +17,8 @@ import {SharedModule} from '../core/shared/shared.module';
   imports: [
     CommonModule,
     CavzodRoutingModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature(`cavzod`, cavzodReducer),
   ]
 })
 export class CavzodModule { }
