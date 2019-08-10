@@ -1,5 +1,5 @@
 import {createSelector} from '@ngrx/store';
-import {getCavzodState} from '../reducers/global.reducer';
+import {getCavzodState} from '../reducers/feature.reducers';
 import {cavzodAdapter} from '../reducers/cavzods.reducer';
 
 export const getCavzodsState = createSelector(

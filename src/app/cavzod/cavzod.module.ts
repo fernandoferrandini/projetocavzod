@@ -8,7 +8,9 @@ import { CavzodDetailComponent } from './components/cavzod-detail/cavzod-detail.
 import { CavzodListComponent } from './components/cavzod-list/cavzod-list.component';
 import {SharedModule} from '../core/shared/shared.module';
 import {StoreModule} from '@ngrx/store';
-import {cavzodReducer} from './store/reducers/global.reducer';
+import {cavzodReducer} from './store/reducers/feature.reducers';
+import {EffectsModule} from '@ngrx/effects';
+import {CavzodsEffects} from './store/effects/cavzods.effects';
 
 
 
@@ -19,6 +21,7 @@ import {cavzodReducer} from './store/reducers/global.reducer';
     CavzodRoutingModule,
     SharedModule,
     StoreModule.forFeature(`cavzod`, cavzodReducer),
+    EffectsModule.forFeature([CavzodsEffects]),
   ]
 })
 export class CavzodModule { }

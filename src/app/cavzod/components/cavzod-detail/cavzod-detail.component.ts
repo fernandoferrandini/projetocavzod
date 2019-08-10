@@ -21,7 +21,10 @@ export class CavzodDetailComponent implements OnInit {
 
   @Input()
   set cavzod(cavzod: Cavzod) {
-    this.cavzodForm.patchValue(cavzod);
+    if (cavzod) {
+      this.cavzodForm.patchValue(cavzod);
+    }
+
   }
 
   @Output()

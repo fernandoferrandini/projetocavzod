@@ -1,6 +1,11 @@
 import {createAction, props} from '@ngrx/store';
 import {Cavzod} from '../../model/cavzod.model';
 
+export const updateCavZodList = createAction(
+  '[Cavzod] Update Cavzod list',
+  props <{cavzods: Cavzod[]}>()
+);
+
 export const selectCavzod = createAction(
   `[Cavzod] Select cavzod`,
   props<{cavzod: Cavzod}>()
@@ -23,6 +28,7 @@ export const updateCavzod = createAction(
 
 export const deleteCavzod = createAction(
   `[Cavzod] Delete Cavzod`,
-  props<{id: number}>()
+  props<{id: string}>()
 );
+
 

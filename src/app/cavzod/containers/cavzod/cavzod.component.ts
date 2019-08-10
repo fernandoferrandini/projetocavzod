@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Cavzod} from '../../model/cavzod.model';
-import {CavzodState} from '../../store/reducers/global.reducer';
+import {CavzodState} from '../../store/reducers/feature.reducers';
 import {Action, select, Store} from '@ngrx/store';
 import {getAllCavzods, getSelectCavzod} from '../../store/selectors/cavzods.selectors';
 

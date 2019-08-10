@@ -1,7 +1,4 @@
 export interface Cavzod {
-  id: number;
+  id: string;
   name: string;
-  constelacao?: string;
-  classe?: string;
-  thumbnail?: string;
 }
