@@ -7,6 +7,14 @@
       <mat-list-item routerLink="/core/layout/cavzod" (click)="sidenav.close()">>
         <mat-icon>list</mat-icon>Lista
       </mat-list-item>
+      <mat-list-item  (click)="logout(); sidenav.close()" *ngIf="isUserAuthenticated$ | async; else Login">>
+        <mat-icon>close</mat-icon>Logout
+      </mat-list-item>
+      <ng-template #Login>
+        <mat-list-item routerLink="/core/layout/login" (click)="sidenav.close()">>
+          <mat-icon>person</mat-icon>Login
+        </mat-list-item>
+      </ng-template>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content fxFlexFill>

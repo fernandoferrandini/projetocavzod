@@ -7,7 +7,7 @@ import * as firebase from 'firebase';
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyBggkKFCPe6rwEu_eHPthTMd-fAXyEyyMI"',
+    apiKey: 'AIzaSyBggkKFCPe6rwEu_eHPthTMd-fAXyEyyMI',
     authDomain: 'cavalheiros-do-zodiaco.firebaseapp.com',
     databaseURL: 'https://cavalheiros-do-zodiaco.firebaseio.com',
     projectId: 'cavalheiros-do-zodiaco',
