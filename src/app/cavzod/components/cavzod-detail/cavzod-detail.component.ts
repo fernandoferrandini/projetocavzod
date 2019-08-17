@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Cavzod} from '../../model/cavzod.model';
 import {Action} from '@ngrx/store';
-import {unselectCavzod, updateCavzod} from '../../store/actions/cavzods.actions';
+import {createCavzod, deleteCavzod, unselectCavzod, updateCavzod} from '../../store/actions/cavzods.actions';
 import {FormBuilder} from '@angular/forms';
 
 
@@ -15,7 +15,9 @@ export class CavzodDetailComponent implements OnInit {
   cavzodForm = this.fb.group(
     {
       id: [''],
-      name: ['']
+      name: [''],
+      classe: [''],
+      constelacao: ['']
     }
   );
 
@@ -40,7 +42,15 @@ export class CavzodDetailComponent implements OnInit {
     this.actionEmitter.emit(unselectCavzod());
   }
 
-  update() {
-    this.actionEmitter.emit(updateCavzod( {cavzod : this.cavzodForm.value}));
+  salvar() {
+    if (this.cavzodForm.get('id') && this.cavzodForm.get('id').value !== '') {
+      this.actionEmitter.emit(updateCavzod({cavzod: this.cavzodForm.value}));
+    } else {
+      this.actionEmitter.emit(createCavzod({cavzod: this.cavzodForm.value}));
+    }
+  }
+
+  delete() {
+    this.actionEmitter.emit(deleteCavzod({id: this.cavzodForm.get('id').value}));
   }
 }
