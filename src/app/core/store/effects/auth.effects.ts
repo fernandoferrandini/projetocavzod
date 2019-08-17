@@ -6,6 +6,7 @@ import {signInEmail, signInGoogle, signOut, signOutSuccess, updateUserInfo} from
 import {catchError, exhaustMap, map, mapTo, switchMap, switchMapTo} from 'rxjs/operators';
 import {auth} from 'firebase/app';
 import {showSnackBar} from '../actions/core.actions';
+import {navigateTo} from '../../../store/actions/app.actions';
 
 
 @Injectable()
@@ -15,7 +16,7 @@ export class AuthEffects {
       ofType(signInEmail),
       exhaustMap(({email, password}) => from(
       this.authFire.auth.signInWithEmailAndPassword(email, password)).pipe(
-        switchMapTo(EMPTY),
+        mapTo(navigateTo({commands: ['core']})),
         catchError((error: auth.Error) => of(showSnackBar({
           message: error.message,
           config: {
@@ -41,7 +42,7 @@ export class AuthEffects {
     exhaustMap(() => from(
       this.authFire.auth.signInWithPopup(new auth.GoogleAuthProvider())
     ).pipe(
-      switchMapTo(EMPTY),
+      mapTo(navigateTo({commands: ['core']})),
       catchError((error: auth.Error) => of(showSnackBar({
         message: error.message,
         config: {
@@ -58,7 +59,14 @@ export class AuthEffects {
     ).pipe(
         mapTo(signOutSuccess()),
     ))
-  ), {dispatch: false})
+  ));
+
+  signOutSuccess$ = createEffect(
+    () => this.action$.pipe(
+      ofType(signOutSuccess),
+      mapTo(navigateTo({commands: ['core']}))
+    )
+  )
 
   constructor(private action$: Actions, private authFire: AngularFireAuth) {
   }
