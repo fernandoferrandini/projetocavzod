@@ -27,12 +27,10 @@ const reducer = createReducer(
   initialState,
   on(updateCavZodList, (state, {cavzods}) => cavzodAdapter.addAll(cavzods, state)),
   on(selectCavzod, (state, {cavzod}) => ({...state, cavzod})),
-  on(unselectCavzod, updateCavzod, (state: CavzodsState) => {
+  on(unselectCavzod, updateCavzod, createCavzod, deleteCavzod, (state: CavzodsState) => {
     const {cavzod, ...rest} = state;
     return rest;
   }),
-  on(createCavzod, (state, {cavzod}) => cavzodAdapter.addOne(cavzod, state)),
-  on(deleteCavzod, (state, {id}) => cavzodAdapter.removeOne(id, state))
 );
 
 export function reducerCavzods(state: CavzodsState, action: Action) {
